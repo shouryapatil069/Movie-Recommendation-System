@@ -5,6 +5,10 @@ from recommender import recommend, get_all_categories, get_movies_by_category
 app = Flask(__name__)
 CORS(app) # Enable CORS so React can connect
 
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({"message": "Movie Recommendation Backend is running"})
+
 @app.route('/recommend', methods=['POST'])
 def get_recommendation():
     data = request.get_json()
