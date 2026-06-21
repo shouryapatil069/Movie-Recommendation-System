@@ -43,6 +43,12 @@ const MovieCard = ({ movie, index }) => {
           )}
         </div>
 
+        {movie.recommendationTag && (
+          <div className="absolute top-12 left-3 bg-gradient-to-r from-orange-600 to-red-600 px-2 py-1 rounded-md text-[10px] font-bold text-white shadow-lg animate-pulse uppercase tracking-wider">
+            {movie.recommendationTag}
+          </div>
+        )}
+
         {/* Content details appearing on hover */}
         <div className="absolute inset-x-0 bottom-0 p-4 transform translate-y-16 group-hover:translate-y-0 transition-transform duration-500 ease-out flex flex-col justify-end h-full">
           <div className="mt-auto">

@@ -24,7 +24,7 @@ def prepare_model(df):
     return cosine_sim
 
 def _format_movie(row):
-    return {
+    movie_dict = {
         "id": int(row['id']),
         "title": str(row['title']),
         "genre": str(row['genre']),
@@ -36,6 +36,11 @@ def _format_movie(row):
         "director": str(row['director']),
         "cast": str(row['cast'])
     }
+    
+    if 'recommendationTag' in row and not pd.isna(row['recommendationTag']) and str(row['recommendationTag']).strip() != '':
+        movie_dict['recommendationTag'] = str(row['recommendationTag'])
+        
+    return movie_dict
 
 def get_recommendations(movie_title, df, cosine_sim):
     try:
