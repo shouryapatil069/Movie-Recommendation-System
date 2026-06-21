@@ -28,7 +28,7 @@ def _format_movie(row):
         "id": int(row['id']),
         "title": str(row['title']),
         "genre": str(row['genre']),
-        "rating": float(row['rating']),
+        "rating": str(row['rating']),
         "year": int(row['year']),
         "overview": str(row['overview']),
         "poster": str(row['poster']),
@@ -53,8 +53,8 @@ def get_recommendations(movie_title, df, cosine_sim):
         # Sort movies based on similarity scores
         sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
         
-        # Get the top 5 most similar movies (excluding the movie itself)
-        sim_scores = sim_scores[1:6]
+        # Get the top most similar movies (INCLUDING the movie itself so it shows in search)
+        sim_scores = sim_scores[0:6]
         
         movie_indices = [i[0] for i in sim_scores]
         
