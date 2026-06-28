@@ -99,14 +99,14 @@ const MovieDetails = () => {
             <div className="mb-8">
               <h3 className="text-lg font-semibold mb-2 text-white">Overview</h3>
               <p className="text-textMuted leading-relaxed max-w-3xl">
-                {movie.overview}
+                {movie.description}
               </p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 mt-auto">
-              {movie.trailerUrl && (
+              {movie.trailer && (
                 <a 
-                  href={movie.trailerUrl}
+                  href={movie.trailer}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-primary hover:bg-primary-hover text-white px-8 py-3 rounded-lg font-semibold transition-colors flex-1 md:flex-none flex items-center justify-center gap-2"
