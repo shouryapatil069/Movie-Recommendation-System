@@ -1,6 +1,10 @@
+import React, { useState } from 'react';
 import MovieCard from './MovieCard';
+import MovieModal from './MovieModal';
 
 const MovieGrid = ({ movies, title }) => {
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
   return (
     <div className="py-8">
       {title && (
@@ -11,9 +15,18 @@ const MovieGrid = ({ movies, title }) => {
       )}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {movies.map((movie, index) => (
-          <MovieCard key={movie.id || index} movie={movie} index={index} />
+          <MovieCard 
+            key={movie.id || index} 
+            movie={movie} 
+            index={index} 
+            onClick={() => setSelectedMovie(movie)} 
+          />
         ))}
       </div>
+      <MovieModal 
+        movie={selectedMovie} 
+        onClose={() => setSelectedMovie(null)} 
+      />
     </div>
   );
 };

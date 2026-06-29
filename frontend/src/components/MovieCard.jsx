@@ -2,9 +2,10 @@ import { motion } from 'framer-motion';
 import { Star, Play, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const MovieCard = ({ movie, index }) => {
+const MovieCard = ({ movie, index, onClick }) => {
   return (
     <motion.div
+      onClick={onClick}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -67,6 +68,7 @@ const MovieCard = ({ movie, index }) => {
                   href={movie.trailer}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
                   className="flex-1 bg-primary hover:bg-primary-hover text-white py-2 rounded-md text-xs font-medium transition-colors flex items-center justify-center gap-1"
                 >
                   <Play className="w-3 h-3 fill-white" /> Trailer
@@ -74,6 +76,7 @@ const MovieCard = ({ movie, index }) => {
               )}
               <Link 
                 to={`/movie/${encodeURIComponent(movie.title)}`} 
+                onClick={(e) => e.stopPropagation()}
                 className="flex-1 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 text-white py-2 rounded-md text-xs font-medium transition-colors flex items-center justify-center gap-1 text-center"
               >
                 <Info className="w-3 h-3" /> Details
